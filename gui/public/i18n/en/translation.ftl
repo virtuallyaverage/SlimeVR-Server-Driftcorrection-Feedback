@@ -123,6 +123,7 @@ widget-developer_mode-filter_slimes_and_hmd = Filter Slimes and HMD
 widget-developer_mode-sort_by_name = Sort by name
 widget-developer_mode-raw_slime_rotation = Raw rotation
 widget-developer_mode-more_info = More info
+widget-developer_mode-verbose_drift = Drift Stats
 
 ## Widget: IMU Visualizer
 widget-imu_visualizer = Rotation
@@ -154,6 +155,7 @@ tracker-table-column-linear-acceleration = Accel. X/Y/Z
 tracker-table-column-rotation = Rotation X/Y/Z
 tracker-table-column-position = Position X/Y/Z
 tracker-table-column-url = URL
+tracker-table-column-drift-stats = Drift Stats
 
 ## Tracker rotation
 tracker-rotation-front = Front

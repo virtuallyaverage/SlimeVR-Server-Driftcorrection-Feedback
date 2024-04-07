@@ -14,6 +14,7 @@ export interface DeveloperModeWidgetForm {
   sortByName: boolean;
   rawSlimeRotation: boolean;
   moreInfo: boolean;
+  verboseDrift: boolean;
 }
 
 export function DeveloperModeWidget() {
@@ -31,6 +32,7 @@ export function DeveloperModeWidget() {
         sortByName: false,
         rawSlimeRotation: false,
         moreInfo: false,
+        verboseDrift:false,
       },
     });
 
@@ -68,6 +70,7 @@ export function DeveloperModeWidget() {
     sortByName: 'sort_by_name',
     rawSlimeRotation: 'raw_slime_rotation',
     moreInfo: 'more_info',
+    verboseDrift: 'verbose_drift'
   };
 
   return (

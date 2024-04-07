@@ -29,6 +29,7 @@ enum DisplayColumn {
   LINEAR_ACCELERATION,
   POSITION,
   URL,
+  DRIFT_STATS,
 }
 
 const displayColumns: { [k: string]: boolean } = {
@@ -42,6 +43,7 @@ const displayColumns: { [k: string]: boolean } = {
   [DisplayColumn.LINEAR_ACCELERATION]: true,
   [DisplayColumn.POSITION]: true,
   [DisplayColumn.URL]: true,
+  [DisplayColumn.DRIFT_STATS]: true,
 };
 
 const isSlime = ({ device }: FlatDeviceTracker) =>
@@ -192,15 +194,20 @@ export function TrackersTable({
   const hasTemperature = !!filteredSortedTrackers.find(
     ({ tracker }) => tracker?.temp && tracker?.temp?.temp != 0
   );
+
+  const enableDriftStats = config?.devSettings?.verboseDrift || false;
+
   displayColumns[DisplayColumn.TEMPERATURE] = hasTemperature || false;
   displayColumns[DisplayColumn.POSITION] = moreInfo || false;
   displayColumns[DisplayColumn.LINEAR_ACCELERATION] = moreInfo || false;
   displayColumns[DisplayColumn.URL] = moreInfo || false;
+  displayColumns[DisplayColumn.DRIFT_STATS] = enableDriftStats || false;
   const displayColumnsKeys = Object.keys(displayColumns).filter(
     (k) => displayColumns[k]
   );
   const firstColumnId = +displayColumnsKeys[0];
   const lastColumnId = +displayColumnsKeys[displayColumnsKeys.length - 1];
+
 
   function column({
     id,
@@ -373,6 +380,19 @@ export function TrackersTable({
           </Typography>
         ),
       })}
+
+      {
+        column({
+          id: DisplayColumn.DRIFT_STATS,
+          label: l10n.getString('tracker-table-column-drift-stats'),
+          labelClassName: 'w-36',
+          row: () => (
+              <Typography color={fontColor} whitespace="whitespace-nowrap">
+                Placeholder for drift stats
+              </Typography>
+          )
+      })}
+
     </div>
   );
 }
